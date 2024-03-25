@@ -126,13 +126,19 @@ function NavBar({ activePage }) {
                     }`}
                   onClick={handleClick}
                 >
-                  <span className="flex flex-row">
+                  <span className="flex flex-row"
+                    style={{
+                      fontSize: "25px"
+                    }}>
                     {isMobile ? "" : wifiDetails.wifi_names ? wifiDetails.wifi_names : "null"}{" "}
                     <AiIcons.AiOutlineWifi />{" "}
                   </span>
                 </button>
               )}
-              <div className="flex flex-row">
+              <div className="flex flex-row"
+                style={{
+                  fontSize: "25px"
+                }}>
                 <h1 className="mr-2" onClick={togglePopup}>
                   {isMobile ? "" : user.first_name}
                 </h1>
@@ -146,7 +152,7 @@ function NavBar({ activePage }) {
           {activePage !== "settings" && isWifiSettingsOpen && (
             <WifiSettings
               isOpen={isWifiSettingsOpen}
-              wifiDetails = {wifiDetails}
+              wifiDetails={wifiDetails}
               onRequestClose={() => handelClose()}
             />
           )}
@@ -156,7 +162,7 @@ function NavBar({ activePage }) {
               <div className="mb-4">
                 {isMobile ?
                   <h1>
-                   <strong>Welcome  {user.first_name} </strong> 
+                    <strong>Welcome  {user.first_name} </strong>
                   </h1> : <></>}
 
                 <Link to={"/usersetiings"} className="text-lg font-bold">
