@@ -6,9 +6,12 @@ import BaseUrl from "../Common/BaseUrl";
 import "./GateWay.css";
 import EditGatewayModal from "./EditGatewayModal";
 import Loading from "../Common/Loading";
+import { useMediaQuery } from "react-responsive";
+
 
 const GatewaySettings = () => {
   useUserAuth();
+  const isMobile = useMediaQuery({ query: "(max-width: 756px)" });
   const user_token = localStorage.getItem("user_token");
   const [downlinkDetails, setDownlinkDetails] = useState({});
   const [uplinkDetails, setUpLinkDetails] = useState({});
@@ -147,7 +150,7 @@ const GatewaySettings = () => {
           <strong>ADR:</strong>{" "}
           {details.a_d_r ? (
             <>
-              <span className="dot-green"></span>
+              <span className="dot-green" ></span>
               <span className="ml-1">ON</span>
             </>
           ) : (
@@ -178,25 +181,52 @@ const GatewaySettings = () => {
         >
           Edit
         </button>
+
+
       </>
     );
   };
 
   return (
     <>
-      {loading && <><Loading size="50px"/></>}
+      {loading && <><Loading size="50px" /></>}
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
         <>
-          <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-semibold mb-4">Gateway Settings</h2>
-            <div className="flex space-x-4">
-              <div className="w-1/2">
-                <h3 className="text-lg font-semibold mb-2">DownLink Gateway(Receiving)</h3>
+          <div className="container mx-auto p-4"
+            style={{
+              paddingLeft: isMobile ? "" : "210px",
+              marginBottom: isMobile ? "" : "15px",
+              paddingBottom: isMobile?"30px":"20px"
+            }} >
+            <h2 className="text-2xl font-semibold mb-4 " ><strong>Gateway Settings</strong></h2>
+            <div className={isMobile ? "" : "flex space-x-4 "} >
+              <div className={isMobile ? "pt-5" : "w-1/3 pt-5"}
+                style={{
+                  boxshadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                  paddingLeft: isMobile ? "10px" : "20px",
+                  borderWidth: "3px",
+                  paddingBottom: "10px",
+                  backgroundColor: "white",
+                  borderRadius: 10,
+                  width: isMobile ? "" : "40vw",
+                  paddingRight: isMobile ? "" : ""
+                }}>
+                <h3 className="text-lg font-semibold mb-2"><strong>DownLink Gateway(Receiving)</strong></h3>
                 {renderGatewaySettings(downlinkDetails, "DownLink")}
               </div>
-              <div className="w-1/2">
-                <h3 className="text-lg font-semibold mb-2">UpLink Gateway(Sending)</h3>
+              <div className={isMobile ? "pt-5 h-full pb-10" : "w-1/2 pt-5"}
+                style={{
+                  boxshadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
+                  paddingLeft: isMobile ? "10px" : "20px",
+                  borderWidth: "3px",
+                  backgroundColor: "white",
+                  borderRadius: 10,
+                  paddingBottom: isMobile ? "10px" : "",
+                  width: isMobile ? "" : "",
+                  paddingRight: isMobile ? "" : ""
+                }}>
+                <h3 className="text-lg font-semibold mb-2"><strong>UpLink Gateway(Sending)</strong></h3>
                 {renderGatewaySettings(uplinkDetails, "UpLink")}
               </div>
             </div>

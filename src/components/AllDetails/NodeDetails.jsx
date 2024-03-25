@@ -3,6 +3,9 @@ import axios from "axios";
 import useUserAuth from "../Auth/UserAuth";
 import BaseUrl from "../Common/BaseUrl";
 
+
+
+
 const NodeDetails = ({ selectedNode, onNodeSelected }) => {
   useUserAuth();
   const URL = BaseUrl();
@@ -114,17 +117,17 @@ const NodeDetails = ({ selectedNode, onNodeSelected }) => {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-lg p-4 h-48">
+    <div className="bg-white rounded-md shadow-lg p-4 h-50" >
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
         <>
           {showAllNodeData ? (
             <>
-              <h2 className="text-2xl font-bold mb-4">Node Details</h2>
+              <h2 className="text-2xl font-bold mb-4 "><b>Node Details</b></h2>
 
               <div className="overflow-x-auto">
                 <table className="min-w-full border border-gray-300">
-                  <thead className="bg-gray-200">
+                  <thead className="bg-gray-200 ">
                     <tr>
                       <th className="py-2 px-4 border">ID</th>
                       <th className="py-2 px-4 border">Time</th>
@@ -176,7 +179,7 @@ const NodeDetails = ({ selectedNode, onNodeSelected }) => {
             <>
               {selectedNode ? (
                 <>
-                  <h2 className="text-2xl font-bold mb-4 flex flex-row justify-between">
+                  <h2 className="text-2xl font-bold mb-4 flex flex-row justify-between" >
                     Node Details of {selectedNode.id}
                     <button onClick={(e) => getAllNodeDataRefresh(e)}>
                       <svg
@@ -196,8 +199,8 @@ const NodeDetails = ({ selectedNode, onNodeSelected }) => {
                     </button>
                   </h2>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-gray-300">
-                      <thead className="bg-gray-200">
+                    <table className="min-w-full border border-gray-300" >
+                      <thead className="bg-gray-200" >
                         <tr>
                           <th className="py-2 px-4 border">ID</th>
                           <th className="py-2 px-4 border">Time</th>
@@ -213,7 +216,7 @@ const NodeDetails = ({ selectedNode, onNodeSelected }) => {
                           <tr
                             key={anode.id}
                             className={`hover:bg-gray-100 transition duration-300 ease-in-out ${
-                              index % 2 === 0 ? "bg-white" : "bg-gray-300"
+                              index % 2 === 0 ? "bg-white" : "bg-gray-300" 
                             }`}
                           >
                             <td className="py-2 px-4 border">{anode.id}</td>

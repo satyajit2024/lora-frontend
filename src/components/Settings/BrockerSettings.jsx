@@ -3,9 +3,12 @@ import axios from "axios";
 import BaseUrl from "../Common/BaseUrl";
 import { toast } from "react-toastify";
 import AttachTopicModal from "../Brocker/AddTopicModel";
+import { useMediaQuery } from "react-responsive";
+
 
 const BrockerSettings = () => {
   const user_token = localStorage.getItem("user_token");
+  const isMobile = useMediaQuery({ query: "(max-width: 756px)" });
   const [brockerList, setBrockerList] = useState([]);
   const [newSettings, setNewSettings] = useState({
     id: null,
@@ -189,16 +192,19 @@ const BrockerSettings = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex flex-row justify-between">
-        <h2 className="text-2xl font-semibold mb-4">Broker Settings</h2>
+    <div className="container mx-auto p-4" style={{paddingLeft: isMobile?"":"200px"}}>
+      <div className="flex flex-row justify-between" >
+        <h2 className="text-2xl font-semibold mb-4" >Broker Settings</h2>
         <div>
           <button
             onClick={() => openModal()}
             className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none mb-2 mr-2"
           >
+          
             Attach Topic With Node
-          </button>
+            
+        </button>
+        
 
           {!isPublishing ? (
             <button
@@ -238,6 +244,7 @@ const BrockerSettings = () => {
                     }
                     className="w-full border p-2 rounded focus:outline-none focus:border-blue-500"
                   />
+                  
                 </div>
                 <div className="mb-4">
                   <label htmlFor="Password">Port</label>
@@ -325,14 +332,15 @@ const BrockerSettings = () => {
       </ul>
       {isPublishModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-          <div className="relative w-auto max-w-md mx-auto my-6">
-            <div className="relative p-6 bg-white shadow-md rounded-md text-gray-800">
+          <div className="relative w-auto max-w-md mx-auto my-6" >
+            <div className="relative p-6 bg-white shadow-md rounded-md text-gray-800" >
               <h2 className="font-bold">Publish Topics</h2>
               <table className="topic-table">
                 <thead>
                   <tr>
                     <th>Node</th>
-                    <th>Publish Topic</th>
+                    <th style={{width:"200px"}}>Publish Topic</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -354,6 +362,7 @@ const BrockerSettings = () => {
                   value={publishTopic}
                   onChange={(e) => setPublishTopic(e.target.value)}
                   className="w-full border p-2 rounded focus:outline-none focus:border-blue-500"
+                 
                 />
                 <button
                   type="button"
@@ -385,13 +394,14 @@ const BrockerSettings = () => {
                   type="button"
                   onClick={closePublishModal}
                   className="mr-2 bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none"
+                  
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handlePublish}
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none"
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none" 
                   disabled={isPublishing}
                 >
                   {isPublishing ? "Publishing..." : "Publish Data"}

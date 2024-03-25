@@ -129,7 +129,7 @@ const GatewayDetails = () => {
       {gateWays.map((gateway) => (
         <div
           key={gateway.id}
-          className="flex p-6 border-b hover:shadow-xl transition duration-300 ease-in-out"
+          className={isMobile ? "p-6 border-b" : "flex p-6 border-b hover:shadow-xl transition duration-300 ease-in-out w-full"}
         >
           <div className="w-2/3 pr-8">
             <h1 className="text-2xl font-bold mb-4 text-blue-500">
@@ -146,7 +146,7 @@ const GatewayDetails = () => {
             <div>
               <strong className="text-lg font-semibold">Frequency:</strong>{" "}
               {gateway.frequency}Mhz
-            </div>
+            </div> 
             <div>
               <strong className="text-lg font-semibold">Bandwidth:</strong>{" "}
               {gateway.bandwidth_display}Khz
@@ -168,7 +168,7 @@ const GatewayDetails = () => {
               {gateway.code_rate}
             </div>
           </div>
-          <div className="w-1/3 flex flex-col items-end mt-10 ml-2">
+          <div className={isMobile?"":"w-1/3 flex flex-col items-end mt-10 ml-2"}>
             <div>
               <strong className="text-lg font-semibold">Mode:</strong>{" "}
               <strong
@@ -210,16 +210,16 @@ const GatewayDetails = () => {
                 &deg;C{" "}
               </span>
             </div>
-            <div className="flex flex-row mr-2 ml-2">
+            <div className="flex flex-row mr-2 ">
               <strong className="text-lg font-semibold">Wifi:</strong>{" "}
               <span className={`flex flex-row${isMobile ? "mt-3" : "mt-1"}`}>
                 {wifiDetails.wifi_names ? wifiDetails.wifi_names : "Null"}{" "}
                 <AiIcons.AiOutlineWifi />{" "}
               </span>
             </div>
-            <div className="flex flex-row mr-2 ml-2">
+            <div className="flex flex-row mr-2">
               <strong className="text-lg font-semibold">IP Address:</strong>{" "}
-              <span className={`${isMobile ? "mt-3" : "mt-1"}`}>
+              <span className={`${isMobile ? "": "mt-1"}`}>
                 {wifiDetails.ip_address ? wifiDetails.ip_address : "0.0.0.0"}
               </span>
             </div>

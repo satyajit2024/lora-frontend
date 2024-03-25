@@ -43,15 +43,18 @@ const Settings = () => {
           className={`flex ${
             isMobile ? "flex-wrap space-y-2" : "flex-row space-x-4"
           } `}
+          
         >
           {settings.map(({ key, label }) => (
             <div key={key} className={`p-2 ${isMobile ? "w-full" : "w-1/2"}`}>
               <button
                 onClick={() => handleSettingClick(key)}
-                className={`block w-full text-left text-blue-500 focus:outline-none rounded-md p-2 bg-gray-100 hover:bg-gray-200 ${
+                className={`block w-full text-left text-blue-500 focus:outline-none rounded-md p-2 ml-20 bg-gray-100 hover:bg-gray-200 ${
                   activeSetting === key ? "font-bold" : ""
                 }`}
+                style={{marginLeft:isMobile?"5px":"200px",width:isMobile?"":"500px"}}
               >
+                
                 {label}
               </button>
             </div>
@@ -62,6 +65,7 @@ const Settings = () => {
           {settings.map(
             ({ key, component }) => activeSetting === key && component
           )}
+          
         </div>
       </div>
       <Footer />

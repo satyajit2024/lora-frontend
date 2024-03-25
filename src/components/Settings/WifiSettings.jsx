@@ -8,7 +8,7 @@ import Loading from "../Common/Loading";
 
 Modal.setAppElement("#root");
 
-const WifiSettings = ({ isOpen, onRequestClose }) => {
+const WifiSettings = ({ isOpen, wifiDetails, onRequestClose }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const modalStyles = {
     content: {
@@ -18,7 +18,7 @@ const WifiSettings = ({ isOpen, onRequestClose }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      width: `${isMobile ? "100%" :"450px"}`,
+      width: `${isMobile ? "100%" : "450px"}`,
       padding: "20px",
     },
   };
@@ -79,11 +79,15 @@ const WifiSettings = ({ isOpen, onRequestClose }) => {
       style={modalStyles}
       contentLabel="Wi-Fi Settings Modal"
     >
+      {isMobile ? <h1 style={{paddingLeft:60,fontSize:"large",paddingBottom:20}}>
+       <strong> Connected Wifi : {wifiDetails.wifi_names} </strong>
+      </h1>: <></>}
+
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-4">Wi-Fi Settings</h2>
       </div>
       {loading ? (
-        <Loading size="30px"/>
+        <Loading size="30px" />
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
@@ -91,9 +95,8 @@ const WifiSettings = ({ isOpen, onRequestClose }) => {
           {availableNetworks.map((network) => (
             <li
               key={network}
-              className={`flex items-center justify-between mb-2 cursor-pointer ${
-                selectedNetwork === network ? "bg-blue-200" : ""
-              }`}
+              className={`flex items-center justify-between mb-2 cursor-pointer ${selectedNetwork === network ? "bg-blue-200" : ""
+                }`}
               onClick={() => setSelectedNetwork(network)}
             >
               <span className="mr-2">{network}</span>

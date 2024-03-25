@@ -152,7 +152,7 @@ const UsersSettings = () => {
     <>
       <NavBar activePage="settings"/>
       <br />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4" style={{marginLeft:isMobile ? "":"200px",width: isMobile ?"100%":"auto",paddingLeft: isMobile ?"20px":""}}>
         <h2 className="text-2xl font-semibold mb-4">User Settings</h2>
         <div className="p-4 bg-gray-200 rounded shadow-md">
           {loading && <p><Loading size="30px"/></p>}

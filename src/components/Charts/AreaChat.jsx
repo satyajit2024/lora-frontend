@@ -9,7 +9,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
 } from "recharts";
 import BaseUrl from "../Common/BaseUrl";
 import axios from "axios";
@@ -65,9 +65,13 @@ const AreaChat = () => {
 
   return (
     <>
-      <div className="md:col-span-1">
-        <div className="chat-container border grid md:grid-rows-2 gap-4 mt-1 mr-2">
-          <div className="md:row-span-1 mb-4">
+      <div className="md:col-span-1" style={{
+        width: isMobile ? "auto" : "auto"
+      }}>
+        <div className="chat-container border grid md:grid-rows-2 gap-4 mt-1 mr-2" style={{
+          width:isMobile?"auto":"auto"
+        }}>
+          <div className="md:row-span-1">
             <h1 className="text-red-600 underline text-center font-bold font-sans text-3xl">
               Device Data Visualization
             </h1>
@@ -75,19 +79,21 @@ const AreaChat = () => {
               <p>Error: {error}</p>
             ) : (
               <ResponsiveContainer
-                width="100%"
-                aspect={isMobile ? 1 : 3}
+                // aspect={isMobile ? 1 : 3}
+                height={isMobile ?280 : 320}
+                width={isMobile ? 350 : 710}
                 className={"mt-4"}
+                padding={20}
               >
                 <AreaChart
                   data={device}
-                  width={isMobile ? 100 : 500}
-                  height={isMobile ? 300 : 600}
-                  margin={
-                    isMobile
-                      ? { top: 5, right: 20, left: 0, bottom: 5 }
-                      : { top: 5, right: 150, left: 100, bottom: 5 }
-                  }
+                // width={isMobile ? 100 : 400}
+                // height={isMobile ? 300 : 700}
+                // margin={
+                //   isMobile
+                //     ? { top: 5, right: 20, left: 0, bottom: 5 }
+                //     : { top: 5, right: 150, left: 100, bottom: 5 }
+                // }
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
@@ -95,15 +101,19 @@ const AreaChat = () => {
                     interval={"preserveStartEnd"}
                     label={{
                       value: "Time",
-                      position: "insideBottom",
-                      dy: 5,
+                      position: "outsideBottom", // Change here
                       fill: "blue",
+                      margin: { top: 10 },
+                      by:10
                     }}
                     tick={{ fill: "green" }}
                     axisLine={{ stroke: "red" }}
                     tickLine={{ stroke: "purple" }}
-                    height={40}
+                    height={20}
+                  // padding={10}
+                  // other props...
                   />
+
 
                   <YAxis
                     label={{
@@ -118,7 +128,7 @@ const AreaChat = () => {
                   />
 
                   <Tooltip />
-                  <Legend />
+                  {/* <Legend /> */}
                   <Area
                     type="monotone"
                     dataKey="size"

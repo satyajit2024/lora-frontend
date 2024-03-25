@@ -197,7 +197,8 @@ const NodeSettings = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-white rounded shadow-md">
+    
+    <div className="p-4 bg-white rounded shadow-md ml-48 "style={{paddingLeft:isMobile?"0px":"15px",width: isMobile ? "90vw":"",marginLeft: isMobile ? "1%":"",marginBottom:isMobile ?"30px":""}}>
       {loading && (
         <>
           <Loading size="50px" />
@@ -207,9 +208,9 @@ const NodeSettings = () => {
       {!loading && !error && (
         <>
           {editMode ? (
-            <form className="space-y-4">
+            <form className="space-y-4" >
               <div className="flex flex-col">
-                <label className="mb-2 text-lg font-semibold text-gray-800">
+                <label className="mb-2 text-lg font-semibold text-gray-800 " >
                   Name:
                 </label>
                 <input
@@ -220,7 +221,10 @@ const NodeSettings = () => {
                     setSelectedNode((prevNode) => ({
                       ...prevNode,
                       id: e.target.value,
+                      
                     }))
+                    
+
                   }
                   className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
                 />
@@ -318,6 +322,7 @@ const NodeSettings = () => {
                     className={`${
                       isMobile ? "h-20 w-32" : "h-12 w-28"
                     } ml-4 text-white px-4 py-2 rounded-md bg-green-500 border border-green-500 hover:bg-white hover:text-green-500 transition-colors duration-300 ease-in-out`}
+                    style={{width:isMobile?"":100,height: isMobile?"":70,margin: isMobile?"":"0 auto"}}
                   >
                     Start Lora
                   </button>
@@ -330,8 +335,8 @@ const NodeSettings = () => {
                       key={node.id}
                       className={`mb-4 ${
                         index % 2 === 0
-                          ? "bg-gray-100 p-4 rounded hover:bg-gray-300 "
-                          : "bg-white p-6 shadow-md rounded hover:bg-gray-300 "
+                          ? "bg-gray-100 p-4 rounded hover:bg-gray-300 ml-5"
+                          : "bg-white p-6 shadow-md rounded hover:bg-gray-300 ml-5 "
                       }`}
                     >
                       <strong className="text-lg font-semibold text-gray-800">
@@ -409,8 +414,8 @@ const NodeSettings = () => {
                   ))}
                 </div>
               ) : (
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-200">
+                <table className="min-w-full divide-y divide-gray-200" >
+                  <thead className="bg-gray-200" >
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Node Id
@@ -435,13 +440,14 @@ const NodeSettings = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200 bg-gray-100">
+                  <tbody className="divide-y divide-gray-200 bg-gray-100" >
                     {nodes.map((node, index) => (
                       <tr
                         key={node.id}
                         className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}
+                        
                       >
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap ">
                           {node.id}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -530,6 +536,7 @@ const NodeSettings = () => {
       )}
     </div>
   );
+  
 };
 
 export default NodeSettings;

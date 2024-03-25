@@ -82,7 +82,7 @@ const BlockedNode = () => {
   }, []);
 
   return (
-    <div className="p-8 bg-white shadow-md rounded-md">
+    <div className="p-8 bg-white shadow-md rounded-md" style={{marginLeft:isMobile ?"":"200px",width: isMobile ?"100%":"87%",marginRight: isMobile ? "20vw" :""}}>
       <h2 className="text-2xl font-bold mb-6">Blocked Nodes</h2>
       {blockedNodes.length === 0 ? (
         <p>No blocked nodes.</p>

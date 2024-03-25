@@ -1,0 +1,13 @@
+.md\:grid-cols-1{
+    margin-top: 7%;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;  
+    background-color: white;
+
+    border-radius: 10px;
+}
+
+
+
+

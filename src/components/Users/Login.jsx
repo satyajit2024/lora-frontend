@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import BaseUrl from "../Common/BaseUrl";
 import Loading from "../Common/Loading";
+import Logo from "../../Images/Logo";
+import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +13,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: "(max-width: 756px)" });
+  
 
   const user_data = localStorage.getItem("user_token");
   const URL = BaseUrl() + "login/";
@@ -92,12 +96,22 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-cover bg-no-repeat">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="border-2 p-10 rounded-lg bg-white">
+    <div className="flex justify-center items-center h-screen bg-cover bg-no-repeat" style={{ backgroundColor: "#97cbc9" }}>
+      <div className="sm:mx-auto sm:w-full sm:max-w-md" >
+        <div className="border-2 p-10 rounded-lg bg-white" style={{ borderRadius: "30px", backgroundColor: "rgba(255, 255, 255, 0.5)", border: "2px solid black", height: "430px", borderWidth: "3px" }}>
+          <div style={{
+            width: 140,
+            height: 120,
+            marginLeft: isMobile ?"70px":"110px",
+            marginBottom:isMobile ?"50px": "40px"
+          }}>
+            <Logo />
+          </div>
+
+
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+              <label className="block text-sm font-medium leading-6 text-gray-900" style={{ marginTop: "-25px" }}>
                 Username<span className="text-red-400">*</span>
               </label>
               <input
@@ -107,8 +121,11 @@ const Login = () => {
                 value={username}
                 required
                 className="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
+                style={{ borderRadius: "20px", border: "2px solid black" }}
               />
             </div>
+
+
 
             <div>
               <div className="flex items-center justify-between">
@@ -128,7 +145,7 @@ const Login = () => {
                 value={password}
                 onKeyPress={handleKeyPress}
                 required
-                className="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
+                className="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400" style={{ borderRadius: "20px", border: "2px solid black" }}
               />
             </div>
 
@@ -137,9 +154,10 @@ const Login = () => {
                 onClick={login}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-900 hover:text-white focus-visible:outline"
+                style={{ borderRadius: "20px", border: "2px solid blue" }}
               >
                 {loading ? (
-                  <Loading size="20px"/>
+                  <Loading size="20px" />
                 ) : (
                   "Sign In"
                 )}

@@ -5,12 +5,14 @@ import Modal from "react-modal";
 import "./Topic.css";
 import BaseUrl from "../Common/BaseUrl";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 
 Modal.setAppElement("#root");
 
 const AttachTopicModal = ({ isOpen, onClose }) => {
   const NewURL = BaseUrl();
-  const [publishTopics, setPublishTopics] = useState([]);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const [publishTopics, setPublishTopics] = useState([])
   const [nodes, setNodes] = useState([]); // State to store the list of nodes
   const [newNodeId, setNewNodeId] = useState("");
   const [newPublishId, setNewPublishId] = useState("");
@@ -164,10 +166,12 @@ const AttachTopicModal = ({ isOpen, onClose }) => {
       onRequestClose={onClose}
       contentLabel="Node Details Modal"
       className="modal-content"
-      overlayClassName="modal-overlay"
+      overlayClassName=  {isMobile ? "modal-overlay-mobile" : "modal-overlay"}
     >
       <h2 className="font-bold">Publish Topics</h2>
-      <table className="topic-table">
+      <table className="topic-table" style={{
+        
+      }}>
         <thead>
           <tr>
             <th>Node</th>

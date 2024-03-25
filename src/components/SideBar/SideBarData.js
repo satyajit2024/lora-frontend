@@ -1,7 +1,7 @@
 import React from "react";
-// import * as FaIcons from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
+
 
 export const SidebarData = [
   {
@@ -19,13 +19,13 @@ export const SidebarData = [
   {
     title: "GateWay",
     path: "/settings",
-    icon: <IoIcons.IoIosSettings />,
+    icon: <FaIcons.FaCogs/>,
     cName: "nav-text",
   },
   {
     title: "Brocker",
     path: "/brocker",
-    icon: <IoIcons.IoIosSettings />,
+    icon: <AiIcons.AiOutlineDatabase />,
     cName: "nav-text",
   },
 ];

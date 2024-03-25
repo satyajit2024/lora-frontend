@@ -4,6 +4,7 @@ import useUserAuth from "../Auth/UserAuth";
 import BaseUrl from "../Common/BaseUrl";
 import NodeDetails from "./NodeDetails";
 import { useMediaQuery } from "react-responsive";
+import "./NodeTable.css";
 
 const NodeTable = () => {
   useUserAuth();
@@ -53,14 +54,19 @@ const NodeTable = () => {
 
   return (
     <>
-      <div className="border ml-2">
+
+      <div className="border ml-2 w-auto">
         <div
-          className="ml-2 mt-2 mb-5 md:row-span-1"
+          className="ml-2 mt-1 mb-5 md:row-span-1"
           style={{
-            height: "50vh",
+            height: "62vh",
             overflow: "auto",
-            width: `${isMobile ? "auto" : "auto"}`,
+            position: "relative",
+            width: isMobile ?"95%":"auto",
+            
           }}
+
+
         >
           {error && <p>Error: {error}</p>}
           {!error && (
@@ -71,9 +77,18 @@ const NodeTable = () => {
           )}
         </div>
 
-        <div className="md:grid md:grid-cols-1 gap-4 ml-2 p-2 border">
-          <div className="rounded-md overflow-hidden border border-gray-300 mb-4">
-            <h2 className="bg-blue-500 text-white p-4 text-lg font-bold">
+        <div className="md:grid md:grid-cols-1 gap-4 ml-2 p-2 border"
+          style={{
+            marginTop: isMobile ? "" : "10px",
+            width: isMobile ? "95%" : "auto"
+          }}>
+          <div className={isMobile ? "rounded-md overflow-y-auto border border-gray-300 mb-4" : "rounded-md overflow-hidden border border-gray-300 mb-4"}>
+            <h2 className="bg-blue-500 text-black p-4 text-lg font-bold"
+              style={{
+                width: isMobile ? "105vw" : "",
+                margin: isMobile ? "0 auto" : "",
+                backgroundColor: isMobile ? "white" : ""
+              }}>
               All Nodes
             </h2>
             <table className="w-full border-collapse">
@@ -98,9 +113,8 @@ const NodeTable = () => {
                     <td className="p-2 border">{node.frequency}</td>
                     <td className="p-2 border">{node.p_d_r}</td>
                     <td
-                      className={`p-2 border ${
-                        node.status ? "text-green-500" : "text-red-500"
-                      }`}
+                      className={`p-2 border ${node.status ? "text-green-500" : "text-red-500"
+                        }`}
                     >
                       {node.status ? "Active" : "Inactive"}
                     </td>

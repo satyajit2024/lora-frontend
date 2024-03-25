@@ -1,0 +1,127 @@
+
+@media only screen and (max-width: 600px) {
+
+
+    body{
+        width: auto;
+        margin: 0;
+        padding: 0;
+        height: 100px;
+        margin: 0 auto;
+    }
+    .grid.md\:grid-cols-2.gap-4.mt-1{
+        
+        width: 300%;   
+    }
+    .bg-white.rounded-md.shadow-lg.overflow-hidden.mt-4.border-4.border-r-8.ml-1.mr-2.mb-2{  /*lora gateway*/
+        margin-left: 20px;
+        width: auto;
+    }
+    .md\:row-span-1{                                                                        /*dashboard*/
+        width: 1000px;
+        height:700px;
+        padding-right: 10px;
+        margin-left: -60px;   
+    }
+    .recharts-responsive-container.mt-4{
+        margin-left: 50px; 
+        margin-top: 150px;                                                                 /*device data*/
+    }
+
+    .rounded-md.overflow-hidden.border.border-gray-300.mb-4{                                /*al nodes*/
+        margin-left: -50px;
+    }
+    
+    .mt-4{
+        margin-left: -70px;
+        top: 0;
+        padding: 10px;
+        width: 600px;
+    }
+
+
+    /*node*/
+
+    .p-4.bg-white.rounded.shadow-md.ml-48{
+        width: 650px;
+        height: 100%;
+        margin-left: 80px;
+        margin-top: 50px ;
+    }
+ 
+
+    .new-nav.nav-setting{
+        width: 200%;
+        margin: auto;
+    }
+    .block.w-full.text-left.text-blue-500.focus\:outline-none.rounded-md.p-2.ml-20.bg-gray-100.hover\:bg-gray-200.font-bold{
+        margin-left: 100vh;
+    }
+
+   
+
+
+    /*gateway*/
+
+    .container{
+        /* width: 950px;
+        margin-left: -130px;
+        align-items: center;
+        height:max-content; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex: 1;
+        width: 100%;
+        
+        flex-wrap: wrap
+        
+    }
+    .item-to-wrap {
+    width: 100%; /* Ensure item takes up full width */
+}
+
+    
+
+    .block.w-full.text-left.text-blue-500.focus\:outline-none.rounded-md.p-2.bg-gray-100.hover\:bg-gray-200{
+      width: 50vw;
+      
+      height: 40px;
+      margin-left: 70px;
+      margin-top: 50px;
+   
+      
+
+    }
+    .w-1\/2{
+            width: 300px;
+            margin-left: -100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+    }
+     
+
+
+    /*broker setting*/
+
+    .block.w-full.text-left.text-blue-500.focus\:outline-none.rounded-md.p-2.bg-gray-100.hover\:bg-gray-200.font-bold{
+        width: 500px;
+        margin-left: -50px;
+        
+    }
+
+    .p-4.h-full.w-full{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+
+    } 
+   
+
+
+   
+    
+
+}

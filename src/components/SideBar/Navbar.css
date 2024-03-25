@@ -4,6 +4,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%; 
+  margin: 0 auto;
+  
 }
 
 .nav-setting {
@@ -12,39 +15,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  
 }
 
-.menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
-}
+
 
 .nav-menu {
-  background-color: #060b26;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
   position: fixed;
+  left: -100;
   top: 0;
-  left: -100%;
-  transition: 850ms;
-  z-index: 1000;
+  bottom: 0;
+  width: 195px;
+  background-color: #060b26;
+  padding: 24px;
+  height: 100vh;
+  z-index: 1000; 
+  transition: 850ms; 
+  padding-left: 17px;
 }
 
-.nav-menu.active {
+ .nav-menu.active {
   left: 0;
   transition: 350ms;
-}
+  
+} 
 
 .nav-text {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 8px 0px 8px 16px;
+  padding: 1px 5px 5px 2px;
   list-style: none;
-  height: 60px;
+  height: 100px;
+
 }
 
 .nav-text a {
@@ -55,44 +59,86 @@
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 16px;
   border-radius: 4px;
+  padding-left: 1 5;
+  font-size: large;
 }
 
 .nav-text a:hover {
   background-color: #1a83ff;
+  width: 170px;
+  height: 50px;
+  border-radius: 50px;
+  padding: 5px;
 }
 
 .nav-menu-items {
   width: 100%;
+  
 }
 
-.navbar-toggle {
+ .navbar-toggle {
   background-color: #060b26;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
 }
+
+
 
 span {
   margin-left: 16px;
 }
 
-@media screen and (max-width: 768px) {
-  .navbar {
-    width: fit-content;
+.flex.flex-row {
+
+  font-size: 25px;
+  
+ 
+}
+
+
+
+@media screen and (max-width: 564px) {
+
+  .navbar{
+    background-color: #060b26;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 5px;
+    
   }
+  .menu-bars .img{
+    margin-left: -20px;
+  }
+
 
   .menu-bars {
     margin-left: 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    background-color:#060b26;
+    
+    
   }
 
   .nav-menu {
-    width: fit-content;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 195px;
     height: 100%;
+    background-color: #060b26;
+    padding-top: 60px; 
+    transition: left 0.3s ease;
+
+    
   }
 
   .nav-menu.active {
@@ -104,4 +150,33 @@ span {
     margin-left: auto;
     width: auto;
   }
+  .nav-menu{
+    display: flex;
+  }
+  .nav-text{
+    height: 100px;
+    margin-left: 20px;  
+  }
+  html {
+    
+    max-height: 100%;
+    max-width: 100%;
+}
+.flex.flex-row {
+
+  font-size: px;
+  
+ 
+}
+.flex.flex-row h1 {
+  
+  font-size: 1rem; 
+  
+}
+.flex.flex-row .mr-3.mt-2 {
+  
+  font-size: 20px; 
+  
+}
+
 }

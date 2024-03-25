@@ -11,6 +11,7 @@ const Settings = () => {
   useUserAuth();
   const [activeSetting, setActiveSetting] = useState("gateway");
   const isMobile = useMediaQuery({ query: "(max-width: 756px)" });
+ 
 
   const handleSettingClick = (setting) => {
     setActiveSetting(setting);
@@ -40,16 +41,18 @@ const Settings = () => {
       >
         <div
           className={`flex ${
-            isMobile ? "flex-wrap space-y-2" : "flex-row space-x-4"
+            isMobile ? "flex-wrap space-y-2" : "flex-row space-x-4" 
+            
           } `}
         >
           {settings.map(({ key, label }) => (
-            <div key={key} className={`p-2 ${isMobile ? "w-full" : "w-full ml-32 mr-48"}`}>
+            <div key={key} className={`p-2 ${isMobile ? "w-full" : "w-full ml-44 mr-48 "}`}>
               <button
                 onClick={() => handleSettingClick(key)}
-                className={`block w-full text-left text-blue-500 focus:outline-none rounded-md p-2 bg-gray-100 hover:bg-gray-200 ${
+                className={`block w-full text-left text-blue-500 focus:outline-none rounded-md p-2 bg-gray-100 hover:bg-gray-200  ${
                   activeSetting === key ? "font-bold" : ""
                 }`}
+              style={{marginLeft: isMobile?"":"110px",width:isMobile?"":"100%"}}
               >
                 {label}
               </button>
@@ -61,7 +64,9 @@ const Settings = () => {
           {settings.map(
             ({ key, component }) => activeSetting === key && component
           )}
+          
         </div>
+        
       </div>
       <Footer/>
     </>

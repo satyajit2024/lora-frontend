@@ -10,6 +10,9 @@ import BaseUrl from "../Common/BaseUrl";
 import Logout from "../Users/Logout";
 import WifiSettings from "../Settings/WifiSettings";
 import { useMediaQuery } from "react-responsive";
+import Logo from "../../Images/Logo";
+
+
 
 function NavBar({ activePage }) {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
@@ -79,14 +82,14 @@ function NavBar({ activePage }) {
 
 
 
-  async function loadAllFunc(){
-    const TokenArray =[]
-    await axios.get(`${URL}token/`).then((response)=>{
+  async function loadAllFunc() {
+    const TokenArray = []
+    await axios.get(`${URL}token/`).then((response) => {
       const result = response?.data?.token
       // eslint-disable-next-line
-      result.map((r)=>{TokenArray.push(r["access_token"])})
+      result.map((r) => { TokenArray.push(r["access_token"]) })
     })
-    if (!TokenArray.includes(user_token)){
+    if (!TokenArray.includes(user_token)) {
       localStorage.removeItem("token_expires_at")
       localStorage.removeItem("user_token")
       window.location.reload()
@@ -98,15 +101,18 @@ function NavBar({ activePage }) {
   useEffect(() => {
     loadAllFunc();
     // eslint-disable-next-line
-  }, []); 
+  }, []);
 
 
   return (
+
     <>
+
       <IconContext.Provider value={{ color: "#fff" }}>
+
+
         <div
-          className={`${activePage !== "settings" ? "navbar" : "nav-setting"}`}
-          
+          className={`new-nav ${activePage !== "settings" ? "navbar" : "nav-setting"}`}
         >
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
@@ -116,22 +122,21 @@ function NavBar({ activePage }) {
               {" "}
               {activePage !== "settings" && (
                 <button
-                  className={`flex flex-row ml-2 ${
-                    isMobile ? "ml-32" : "mr-10"
-                  }`}
+                  className={`flex flex-row ml-2 ${isMobile ? "mr-10" : "mr-10"
+                    }`}
                   onClick={handleClick}
                 >
                   <span className="flex flex-row">
-                    {wifiDetails.wifi_names ? wifiDetails.wifi_names : "null"}{" "}
+                    {isMobile ? "" : wifiDetails.wifi_names ? wifiDetails.wifi_names : "null"}{" "}
                     <AiIcons.AiOutlineWifi />{" "}
                   </span>
                 </button>
               )}
               <div className="flex flex-row">
                 <h1 className="mr-2" onClick={togglePopup}>
-                  {user.first_name}
+                  {isMobile ? "" : user.first_name}
                 </h1>
-                <div className="mr-2 mt-2" onClick={togglePopup}>
+                <div className={isMobile ? "mt-1" : "mr-3 mt-1"} onClick={togglePopup}>
                   <FaIcons.FaRegUserCircle />
                 </div>
               </div>
@@ -141,13 +146,19 @@ function NavBar({ activePage }) {
           {activePage !== "settings" && isWifiSettingsOpen && (
             <WifiSettings
               isOpen={isWifiSettingsOpen}
+              wifiDetails = {wifiDetails}
               onRequestClose={() => handelClose()}
             />
           )}
 
           {isPopupVisible && (
-            <div className="absolute top-12 right-0 bg-white p-4 shadow-md rounded-md text-gray-800 mr-2 mt-2">
+            <div className="absolute top-12 right-0 bg-white p-4 shadow-md rounded-md text-gray-800 mr-2 mt-2 z-10">
               <div className="mb-4">
+                {isMobile ?
+                  <h1>
+                   <strong>Welcome  {user.first_name} </strong> 
+                  </h1> : <></>}
+
                 <Link to={"/usersetiings"} className="text-lg font-bold">
                   User Details
                 </Link>
@@ -166,12 +177,23 @@ function NavBar({ activePage }) {
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
+                {/* <AiIcons.AiOutlineClose /> */}
+                <div
+                  style={{
+                    width: isMobile ? "85px" : 85,
+                    height: isMobile ? "90px" : 90,
+                    margin: isMobile ? "20" : 30,
+                    paddingBottom: isMobile ? "20px" : 10,
+                    paddingLeft: 5
+                  }}>
+                  <Logo />
+                </div>
+
               </Link>
             </li>
             {SidebarData.map((item, index) => {
               return (
-                <li key={index} className={item.cName}>
+                <li key={index} className={item.cName} style={{ width: "100%" }}>
                   <Link to={item.path}>
                     {item.icon}
                     <span>{item.title}</span>

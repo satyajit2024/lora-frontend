@@ -1,4 +1,28 @@
 .chart-container {
-    overflow: auto;
-    max-width: 100%;
+  overflow: auto;
+  max-width: 80%;
   }
+  .recharts-surface{
+    margin: auto;
+    margin-bottom: 10px auto;
+    width: 100%;
+    border: 3px;
+    padding: 10px;  
+  }
+  
+  .recharts-layer.recharts-cartesian-axis.recharts-xAxis.xAxis{
+    height: 10px;
+    
+  }
+  .recharts-legend-wrapper{
+   margin-bottom: -20px;
+  padding-left: 55px;
+  }
+  .recharts-wrapper{
+    height: 10px;
+  }
+  body{
+    background-color: rgb(231, 226, 226);
+    
+  }
+  

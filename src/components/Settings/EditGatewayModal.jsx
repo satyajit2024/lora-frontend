@@ -8,7 +8,14 @@ const EditGatewayModal = ({
 }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-      <div className="bg-white p-4 rounded shadow-md max-w-lg max-h-96 overflow-y-auto">
+      <div className="bg-white p-4 rounded shadow-md max-w-lg max-h-96 overflow-y-auto"
+        style={{
+          border: "2px solid black",
+          borderRadius: "5px",
+          backgroundColor: "white",
+          
+          
+        }}>
         <h3 className="text-lg font-semibold mb-4">Edit Gateway</h3>
         <form>
           <div className="flex flex-col">

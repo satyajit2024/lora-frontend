@@ -45,12 +45,14 @@ const Brocker = () => {
           } `}
         >
           {settings.map(({ key, label }) => (
-            <div key={key} className={`p-2 ${isMobile ? "w-full" : "w-full ml-32 mr-48"}`}>
+            <div key={key} className={`p-2 ${isMobile ? "w-full" : "w-full ml-40 mr-45"}`}
+            style={{marginLeft: isMobile ? "" : "200px"}}>
               <button
                 onClick={() => handleSettingClick(key)}
                 className={`block w-full text-left text-blue-500 focus:outline-none rounded-md p-2 bg-gray-100 hover:bg-gray-200 ${
                   activeSetting === key ? "font-bold" : ""
                 }`}
+                
               >
                 {label}
               </button>

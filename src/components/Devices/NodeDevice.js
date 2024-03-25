@@ -19,7 +19,7 @@ const NodeDevice = ({ onAddNode }) => {
     gateway: "",
   });
 
-  const NewURL = BaseUrl();
+  const NewURL = BaseUrl(); 
 
   const fetchGateways = async () => {
     const gatewayURL = `${NewURL}gateway-models/`;
@@ -92,8 +92,8 @@ const NodeDevice = ({ onAddNode }) => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="rounded">
+    <div className="container" >
+      <div className="rounded" style={{paddingLeft:"10px",margin:"0 auto"}} >
         {loading && <><Loading size="0px"/></>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && (
